@@ -1,0 +1,9 @@
+{
+  "name": "pro-ex",
+  "version": "1.0.0",
+  "description": "PRO-EX (PROcastinating EXpenditures) - student daily budget and savings app",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "private": true
+}
