@@ -8,6 +8,7 @@ const ROOT = path.join(__dirname, "public");
 const TYPES = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
+  ".css": "text/css; charset=utf-8",
   ".webmanifest": "application/manifest+json; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".png": "image/png",
@@ -33,7 +34,7 @@ http.createServer((req, res) => {
     const headers = {
       "Content-Type": TYPES[ext] || "application/octet-stream",
       "X-Content-Type-Options": "nosniff",
-      "Cache-Control": (ext === ".html" || file.endsWith("sw.js") || ext === ".webmanifest") ? "no-cache" : "public, max-age=86400"
+      "Cache-Control": (ext === ".html" || ext === ".js" || ext === ".css" || ext === ".webmanifest") ? "no-cache" : "public, max-age=86400"
     };
     res.writeHead(200, headers);
     res.end(req.method === "HEAD" ? undefined : data);

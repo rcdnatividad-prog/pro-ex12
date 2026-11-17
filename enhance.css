@@ -1,0 +1,26 @@
+/* PRO-EX enhancements: desktop layout + savings adjustment styles. Uses the app's existing colors. */
+:root{--ok:#0f7b5f;--warn:#7a4a21;--bad:#b3261e}
+.pxgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0 12px}
+.pxs{display:flex;flex-direction:column;gap:2px;padding:12px;border:1px solid var(--bd);border-radius:12px;background:var(--bg)}
+.pxi{font-size:20px}.pxl{font-size:12px;color:var(--gr)}.pxs b{font-size:19px}
+.pxs.good b{color:var(--ok)}.pxs.warn b{color:var(--warn)}.pxs.bad b{color:var(--bad)}
+.pxmsg{padding:12px 14px;border-radius:12px;font-size:14px;margin:6px 0 12px;border-left:5px solid var(--ok);background:rgba(15,123,95,.12)}
+.pxmsg.warn{border-color:var(--ye);background:rgba(242,183,5,.18)}
+.pxmsg.bad{border-color:var(--bad);background:rgba(179,38,30,.12)}
+.pxbar.warn i{background:var(--ye)}.pxbar.bad i{background:var(--bad)}
+.pxnote{margin-top:8px}
+#pxToast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 12px);transform:translate(-50%,-200%);max-width:min(92vw,520px);padding:12px 16px;border-radius:12px;color:#fff;font-size:14px;z-index:50;transition:transform .25s;box-shadow:0 6px 20px rgba(0,0,0,.25);background:var(--em)}
+#pxToast.show{transform:translate(-50%,0)}#pxToast.warn{background:var(--br)}#pxToast.bad{background:var(--bad)}
+@media(min-width:700px){.pxgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:700px) and (max-width:899px){body.in #app{max-width:680px}}
+@media(min-width:900px){
+ body.in nav{top:0;right:auto;width:200px;flex-direction:column;justify-content:flex-start;padding:24px 12px;border-top:0;border-right:1px solid var(--bd)}
+ body.in nav button{display:flex;align-items:center;gap:10px;text-align:left;padding:14px;border-radius:12px;margin:0 0 6px;box-shadow:none;font-size:16px}
+ body.in nav button.on{background:rgba(15,123,95,.12);box-shadow:none}
+ body.in nav button br{display:none}
+ body.in #app{max-width:none;margin:0 0 0 200px;padding:28px max(32px,calc((100vw - 200px - 1080px)/2)) 40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;align-items:start}
+ body.in #app>.top,body.in #app>.quote,body.in #app>.pxpanel{grid-column:1/-1}
+ body.in #app>.card.solo{grid-column:1/-1;max-width:560px}
+ .pxgrid{grid-template-columns:repeat(6,minmax(0,1fr))}
+}
+.pxsplit summary{cursor:pointer;font-weight:600;color:var(--br)}.pxsp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px;margin-top:6px}.pxsp label{margin:8px 0 0}
